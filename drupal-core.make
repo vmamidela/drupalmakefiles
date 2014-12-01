@@ -8,6 +8,6 @@ projects[drupal][type] = core
 projects[drupal][version] = "7.34"
 
 ;Custom Profile vmamidela-distro git clone
-projects[vmamidela-distro][type] = profile
-projects[vmamidela-distro][download][type] = git
-projects[vmamidela-distro][download][url] = https://github.com/vmamidela/vmamidela_distro.git
+projects[vmamidela_distro][type] = profile
+projects[vmamidela_distro][download][type] = git
+projects[vmamidela_distro][download][url] = https://github.com/vmamidela/vmamidela_distro.git
