@@ -10,4 +10,4 @@ projects[drupal][version] = "7.34"
 ;Custom Profile vmamidela-distro git clone
 projects[vmamidela-distro][type] = profile
 projects[vmamidela-distro][download][type] = git
-projects[vmamidela-distro][download][url] = git@github.com:vmamidela/vmamidela-distro.git
+projects[vmamidela-distro][download][url] = https://github.com/vmamidela/vmamidela-distro.git
