@@ -4,7 +4,5 @@ core = 7.x
 api = 2
 projects[drupal][version] = "7.34"
 
-projects[pushya_theme][type] = theme
 projects[pushya_theme][download][type] = git
-projects[pushya_theme][download][url] = "https://github.com/vmamidela/pushya_theme.git"
-projects[pushya_theme][directory_name] = "pushya_theme"
+projects[pushya_theme][download][url] = "https://github.com/vmamidela/pushyaconsulting.git"
