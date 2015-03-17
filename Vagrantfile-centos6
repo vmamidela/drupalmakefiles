@@ -1,0 +1,33 @@
+Vagrant.configure('2') do |baseconfig|
+  hostfqdn='web.pushyaconsulting.com'
+  cpus = 2
+  memory = 3582
+  sshport = 2226
+  privateip = '33.33.33.30'
+  baseconfig.ssh.port = sshport
+  baseconfig.ssh.host = "127.0.0.1"
+  box_url = "http://localhost/centos6.6-x86_64.box"
+  baseconfig.vm.define :config do |config|
+    config.vm.box = "#{hostfqdn}"
+    config.vm.hostname = "#{hostfqdn}"
+    config.vm.box_url = "#{box_url}"
+    config.vm.provider "virtualbox" do |providervmcustomize|
+      providervmcustomize.name = hostfqdn
+      providervmcustomize.customize ["modifyvm", :id, "--memory", memory]
+      providervmcustomize.customize ["modifyvm", :id, "--cpus", cpus]
+      providervmcustomize.customize ["modifyvm", :id, "--rtcuseutc", "on"]
+      providervmcustomize.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+#      providervmcustomize.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+ #     providervmcustomize.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+  #    providervmcustomize.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/vagrant_root", "1"]
+    end
+    config.vm.network  "private_network", ip: "#{privateip}"
+#    config.vm.network "public_network", bridge: 'eth0'
+    config.vm.boot_timeout = 500
+    config.vm.network "forwarded_port", guest:  22, host: "#{sshport}", id: "ssh", auto_correct: true
+    config.vm.network "forwarded_port", guest:  80, host: 8080
+#    config.vm.synced_folder "./vagrant", "/vagrant", type: "nfs", linux__nfs_options: ["rw", "no_subtree_check", "async", "all_squash"], mount_options: ["async", "noatime","nodiratime"]
+#    config.vm.provision "shell",
+#      path:  "ami_startup-vagrant.sh"
+  end
+end

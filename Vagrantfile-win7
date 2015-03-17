@@ -1,0 +1,12 @@
+Vagrant.configure("2") do |config|
+
+  # Configure base box parameters
+  config.vm.box = "vagrant-windows7"
+  config.vm.box_url = "./vagrant-windows2008r2.box"
+  config.vm.guest = :windows
+
+  # Port forward WinRM and RDP
+  config.vm.network :forwarded_port, guest: 3389, host: 3389
+  config.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
+
+end
