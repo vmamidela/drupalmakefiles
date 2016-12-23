@@ -1,13 +1,21 @@
-; Thi File is to Build The Drupal 7 distro
-api = 2
+# Thi File is to Build The Drupal 7 distro
+api:  2
 
-; Define Drupal Core
-core = 8.x
+# Define Drupal Core
+core: 8.x
 
-projects[drupal][type] = core
-projects[drupal][version] = "8.2.3"
+# Defining Projects
 
-;Custom Profile vmamidela-distro git clone
-projects[infoacharya_profile][type] = profile
-projects[infoacharya_profile][download][type] = git
-projects[infoacharya_profile][download][url] = https://github.com/vmamidela/infoacharya_profile.git
+projects:
+  drupal:
+    type: core
+    # ~ sign will get latest version of Drupal release which was not available in D7
+    version: ~
+
+  #Custom Profile infoacharya_profile  git clone
+  infoacharya_profile:
+    type: profile
+    subdir: ""
+    download:
+      type: git
+      url: "https://github.com/vmamidela/infoacharya_profile.git"
